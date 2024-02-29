@@ -1,6 +1,9 @@
 <script>
+import WebtoonCard from "@/components/WebtoonCard.vue";
+
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  components: {WebtoonCard}
 }
 </script>
 
@@ -12,6 +15,10 @@ export default {
             class="desktop-break"> <br> </span>
           <span class="mobile-break"><br></span> 나한테 딱 맞는 웹툰을 <span class="mobile-break"><br></span> 추천받고 지인과 공유하세요.
         </h6>
+      </div>
+
+      <div class="container">
+        <WebtoonCard/>
       </div>
     </div>
   </main>
