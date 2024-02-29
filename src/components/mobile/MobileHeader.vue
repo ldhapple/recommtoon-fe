@@ -7,7 +7,7 @@
         </a>
         <div>
           <button type="button" class="btn btn-outline-light me-2" @click="$router.push('/login')">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+          <button type="button" class="btn btn-warning" @click="$router.push('/register')">회원 가입</button>
         </div>
       </div>
     </div>

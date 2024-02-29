@@ -7,10 +7,10 @@ export default {
       isMenuVisible: false,
       activeMenu: '',
       menus: [
-        {name: 'Features', path: '/features'},
-        {name: 'Pricing', path: '/pricing'},
-        {name: 'FAQs', path: '/faqs'},
-        {name: 'About', path: '/about'},
+        {name: 'Features', path: '/'},
+        {name: 'Pricing', path: '/'},
+        {name: 'FAQs', path: '/'},
+        {name: 'About', path: '/'},
       ],
     };
   },

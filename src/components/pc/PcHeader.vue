@@ -19,7 +19,7 @@
           </ul>
           <div class="text-end">
             <button type="button" class="btn btn-outline-light me-2" @click="$router.push('/login')">Login</button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
+            <button type="button" class="btn btn-warning" @click="$router.push('/register')">회원 가입</button>
           </div>
         </div>
       </div>
@@ -35,10 +35,10 @@ export default {
       isMenuVisible: false,
       activeMenu: '',
       menus: [
-        {name: 'Features', path: '/features'},
-        {name: 'Pricing', path: '/pricing'},
-        {name: 'FAQs', path: '/faqs'},
-        {name: 'About', path: '/about'},
+        {name: 'Features', path: '/'},
+        {name: 'Pricing', path: '/'},
+        {name: 'FAQs', path: '/'},
+        {name: 'About', path: '/'},
       ],
     };
   },
