@@ -7,10 +7,10 @@ export default {
       isMenuVisible: false,
       activeMenu: '',
       menus: [
-        {name: 'Features', path: '/'},
-        {name: 'Pricing', path: '/'},
-        {name: 'FAQs', path: '/'},
-        {name: 'About', path: '/'},
+        {name: '전체웹툰', path: '/evaluate'},
+        {name: '평가하기', path: '/evaluate'},
+        {name: 'AI추천', path: '/recommendation'},
+        {name: '친구의웹툰', path: '/'},
       ],
     };
   },
@@ -37,5 +37,15 @@ export default {
 </template>
 
 <style scoped>
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa; /* 푸터 배경색, 필요에 따라 변경 */
+  z-index: 100; /* 푸터가 다른 요소들 위에 표시되도록 z-index 설정 */
+}
 
+.nav-link {
+  font-size: 0.775rem;
+}
 </style>
