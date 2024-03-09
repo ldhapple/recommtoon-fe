@@ -17,7 +17,8 @@ export default {
       },
 
       prevForm: {},
-      errorFields: {}
+      errorFields: {},
+      validFields: {}
     })
 
     const savePrevForm = () => {
@@ -34,10 +35,12 @@ export default {
       axios.get(`/api/account/checkDuplicate/${field}/${value}`).then(res => {
         if (res.data) {
           window.alert(`사용 가능`);
+          state.validFields[field] = true;
           delete state.errorFields[field];
         } else {
           window.alert(`이미 사용 중 입니다.`)
           state.errorFields[field] = true;
+          delete state.validFields[field];
         }
       }).catch(error => {
         console.error('중복 체크 실패: ', error);
@@ -47,7 +50,10 @@ export default {
     const submit = () => {
       axios.post('/api/account/register', state.form).then(res => {
         console.log(res);
-        router.push('/login');
+
+        if (res.status === 200) {
+          router.push('/login');
+        }
       }).catch(error => {
         console.error('회원 가입 실패: ', error);
         window.alert("중복 체크를 해주세요.");
@@ -82,11 +88,12 @@ export default {
                          placeholder="홍길동"
                          required>
                 </div>
-                <div class="col-9" >
+                <div class="col-9">
                   <label for="username" class="form-label">아이디 <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="username" id="username" v-model="state.form.username"
                          placeholder="Id"
-                         required :class="{ 'input-error': state.errorFields['username'] }">
+                         required
+                         :class="{ 'input-error': state.errorFields['username'], 'input-success': state.validFields['username'] }">
                 </div>
                 <div class="col-3 d-flex align-items-center">
                   <button class="btn btn-primary" @click="checkDuplicate('username')">중복 체크</button>
@@ -95,7 +102,8 @@ export default {
                   <label for="nickname" class="form-label">닉네임 <span class="text-danger">*</span></label>
                   <input type="text" class="form-control" name="nickname" id="nickname" v-model="state.form.nickname"
                          placeholder="닉네임"
-                         required :class="{ 'input-error': state.errorFields['nickname'] }">
+                         required
+                         :class="{ 'input-error': state.errorFields['nickname'], 'input-success': state.validFields['nickname'] }">
                 </div>
                 <div class="col-3 d-flex align-items-center">
                   <button class="btn btn-primary" @click="checkDuplicate('nickname')">중복 체크</button>
@@ -145,8 +153,7 @@ export default {
                 </div>
                 <div class="col-12">
                   <div class="d-grid">
-                    <button class="btn btn-lg btn-primary" @click="savePrevForm(); submit()">
-                      <router-link to="/login" class="link-primary text-decoration-none"></router-link>
+                    <button class="btn btn-lg btn-primary" @click="savePrevForm(); submit()" type="button">
                       회원가입
                     </button>
                   </div>
@@ -173,5 +180,9 @@ export default {
 <style scoped>
 .input-error {
   border: 1px solid red;
+}
+
+.input-success {
+  border: 1px solid blue;
 }
 </style>

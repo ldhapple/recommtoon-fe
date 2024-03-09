@@ -1,7 +1,9 @@
 <template>
   <MobileHeader v-if="isMobile"/>
   <PcHeader v-if="!isMobile"/>
-  <RouterView/>
+  <div class="content">
+    <RouterView/>
+  </div>
   <MobileFooter v-if="isMobile"/>
 </template>
 
@@ -112,5 +114,9 @@ export default {
 
 .bd-mode-toggle .dropdown-menu .active .bi {
   display: block !important;
+}
+
+.content {
+  padding-bottom: 50px;
 }
 </style>
