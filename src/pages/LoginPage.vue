@@ -23,7 +23,7 @@ export default {
         const accessToken = response.headers['authorization']?.split(" ")[1];
         setAuth(accessToken, state.form.username);
         console.log('로그인 성공');
-        router.push('/');
+        router.go(-1);
       } catch (error) {
         console.error('로그인 실패: ', error);
         window.alert("유효한 ID/Password가 아닙니다.");
