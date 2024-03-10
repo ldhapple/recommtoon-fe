@@ -5,6 +5,7 @@ import RegisterPage from "@/pages/RegisterPage.vue";
 import EvaluatePage from "@/pages/EvaluatePage.vue"
 import RecommendationPage from "@/pages/RecommendationPage.vue";
 import useAuthStore from "@/stores/authStore";
+import WebtoonBoardPage from "@/pages/WebtoonBoardPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -36,6 +37,12 @@ const router = createRouter({
             component: RecommendationPage,
             meta: {requireAuth: true}
         },
+        {
+            path: '/board/:webtoonId',
+            name: 'WebtoonBoardPage',
+            component: WebtoonBoardPage,
+            props: true
+        }
     ],
 });
 
