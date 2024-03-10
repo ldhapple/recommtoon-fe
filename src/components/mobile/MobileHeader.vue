@@ -32,7 +32,7 @@ export default {
   <header class="p-3 bg-dark text-white">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <a href="/#!" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <a href="/#!" @click="$router.push('/')" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
           <span>Recommtoon</span>
         </a>
         <template v-if="!isAuthenticated">
