@@ -6,7 +6,7 @@
          @mouseleave="toggleHover(webtoon.id, false)">
       <img :src="webtoon.image" class="card-img-top" alt="webtoon">
       <div class="card-info" v-if="webtoon.hover">
-        <button class="btn btn-primary">Comments</button>
+        <button @click="goToWebtoonPage(webtoon.id)" class="btn btn-primary">Comments</button>
       </div>
     </div>
   </div>
@@ -14,6 +14,7 @@
 
 <script>
 import '@/assets/css/webtoon-card.css';
+import {useRouter} from "vue-router";
 
 export default {
   data() {
@@ -57,6 +58,16 @@ export default {
       const webtoon = this.webtoons.find(w => w.id === webtoonId);
       if (webtoon) webtoon.hover = state;
     },
+  },
+  setup() {
+    const router = useRouter();
+    const goToWebtoonPage = (webtoonId) => {
+      router.push({ name: 'WebtoonBoardPage', params: { webtoonId: webtoonId.toString() } });
+    };
+
+    return {
+      goToWebtoonPage
+    }
   }
 };
 </script>
