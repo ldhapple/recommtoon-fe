@@ -1,15 +1,19 @@
 <template>
-  <div class="webtoon-card-container">
-    <div class="webtoon-card"
-         v-for="webtoon in webtoons" :key="webtoon.id"
-         @mouseover="toggleHover(webtoon.id, true)"
-         @mouseleave="toggleHover(webtoon.id, false)">
-      <img :src="webtoon.image" class="card-img-top" alt="webtoon">
-      <div class="card-info" v-if="webtoon.hover">
-        <button class="btn btn-primary">Comments</button>
+    <div class="scroll-container">
+      <button @click="scrollLeft" class="scroll-arrow left-arrow">&lt;</button>
+      <div class="webtoon-card-container">
+        <div class="webtoon-card"
+             v-for="webtoon in webtoons" :key="webtoon.id"
+             @mouseover="toggleHover(webtoon.id, true)"
+             @mouseleave="toggleHover(webtoon.id, false)">
+          <img :src="webtoon.image" class="card-img-top" alt="webtoon">
+          <div class="card-info" v-if="webtoon.hover">
+            <button class="btn btn-primary">Comments</button>
+          </div>
+        </div>
       </div>
+      <button @click="scrollRight" class="scroll-arrow right-arrow">&gt;</button>
     </div>
-  </div>
 </template>
 
 <script>
@@ -57,6 +61,14 @@ export default {
       const webtoon = this.webtoons.find(w => w.id === webtoonId);
       if (webtoon) webtoon.hover = state;
     },
+    scrollLeft() {
+      const container = this.$el.querySelector('.webtoon-card-container');
+      container.scrollBy({left: -600, behavior: 'smooth'});
+    },
+    scrollRight() {
+      const container = this.$el.querySelector('.webtoon-card-container');
+      container.scrollBy({left: 600, behavior: 'smooth'});
+    }
   }
 };
 </script>

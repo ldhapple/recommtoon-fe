@@ -1,9 +1,9 @@
 <script>
-import WebtoonCard from "@/components/WebtoonCard.vue";
+import WebtoonCardWithScroll from "@/components/WebtoonCardWithScroll.vue";
 
 export default {
   name: 'HomePage',
-  components: {WebtoonCard}
+  components: {WebtoonCardWithScroll}
 }
 </script>
 
@@ -18,7 +18,9 @@ export default {
       </div>
 
       <div class="container">
-        <WebtoonCard/>
+        <WebtoonCardWithScroll/>
+        <WebtoonCardWithScroll/>
+        <WebtoonCardWithScroll/>
       </div>
     </div>
   </main>
