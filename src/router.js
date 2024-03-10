@@ -38,7 +38,7 @@ const router = createRouter({
             meta: {requireAuth: true}
         },
         {
-            path: '/board/:webtoonId',
+            path: '/board/:titleId',
             name: 'WebtoonBoardPage',
             component: WebtoonBoardPage,
             props: true

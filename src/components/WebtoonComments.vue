@@ -14,7 +14,7 @@ onMounted(async () => {
 
 const loadComments = async () => {
   try {
-    const response = await axios.get(`/api/comments/${route.params.webtoonId}`);
+    const response = await axios.get(`/api/comments/${route.params.titleId}`);
     comments.value = response.data;
   } catch (error) {
     console.log(error);
@@ -23,7 +23,7 @@ const loadComments = async () => {
 
 const submitComment = async () => {
   try {
-    await axios.post(`/api/comments/new/${route.params.webtoonId}`, {
+    await axios.post(`/api/comments/new/${route.params.titleId}`, {
       content: newComment.value
     });
     newComment.value = '';

@@ -5,12 +5,12 @@ import axios from "@/axios";
 import {useRoute} from "vue-router";
 
 const route = useRoute();
-const webtoonId = ref(route.params.webtoonId);
+const titleId = ref(route.params.titleId);
 const webtoonDetails = ref({});
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`/api/board/${webtoonId.value}`);
+    const response = await axios.get(`/api/board/${titleId.value}`);
     webtoonDetails.value = response.data;
   } catch (error) {
     console.error(error);
