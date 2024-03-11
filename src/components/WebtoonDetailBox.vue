@@ -11,7 +11,7 @@ const webtoonDetails = ref({});
 onMounted(async () => {
   try {
     const response = await axios.get(`/api/board/${titleId.value}`);
-    webtoonDetails.value = response.data;
+    webtoonDetails.value = response.data.response;
   } catch (error) {
     console.error(error);
   }

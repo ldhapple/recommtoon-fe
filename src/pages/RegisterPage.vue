@@ -33,7 +33,7 @@ export default {
       }
 
       axios.get(`/api/account/checkDuplicate/${field}/${value}`).then(res => {
-        if (res.data) {
+        if (res.data.response) {
           window.alert(`사용 가능`);
           state.validFields[field] = true;
           delete state.errorFields[field];

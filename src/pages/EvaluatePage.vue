@@ -28,7 +28,7 @@ export default {
     async updateEvaluatedCount() {
       try {
         const response = await axios.get('/api/evaluation/count');
-        this.evaluatedCount = response.data;
+        this.evaluatedCount = response.data.response;
       } catch (error) {
         console.error(error);
       }
@@ -57,7 +57,7 @@ export default {
     async getWebtoons() {
       try {
         const response = await axios.get(`/api/evaluation/card?page=${this.page}&size=${this.size}`);
-        this.webtoons.push(...response.data.content);
+        this.webtoons.push(...response.data.response.content);
         this.page++;
       } catch (error) {
         console.error(error);

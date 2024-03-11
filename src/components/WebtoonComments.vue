@@ -15,7 +15,7 @@ onMounted(async () => {
 const loadComments = async () => {
   try {
     const response = await axios.get(`/api/comments/${route.params.titleId}`);
-    comments.value = response.data;
+    comments.value = response.data.response;
   } catch (error) {
     console.log(error);
   }
