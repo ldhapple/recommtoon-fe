@@ -13,9 +13,11 @@ export default {
         nickname: '',
         password: '',
         gender: '',
-        mbtiType: ''
+        mbtiType: '',
+        birthYear: ''
       },
 
+      years: [],
       prevForm: {},
       errorFields: {},
       validFields: {}
@@ -45,6 +47,11 @@ export default {
       }).catch(error => {
         console.error('중복 체크 실패: ', error);
       });
+    }
+
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= currentYear - 100; year--) {
+      state.years.push(year);
     }
 
     const submit = () => {
@@ -128,6 +135,13 @@ export default {
                       <label class="form-check-label" for="genderFemale">여성</label>
                     </div>
                   </div>
+                </div>
+                <div class="col-12">
+                  <label for="birthYear" class="form-label">출생년도 <span class="text-danger">*</span></label>
+                  <select class="form-select" id="birthYear" v-model="state.form.birthYear" required>
+                    <option value="">선택...</option>
+                    <option v-for="year in state.years" :key="year" :value="year">{{ year }}</option>
+                  </select>
                 </div>
                 <div class="col-12">
                   <label for="mbti" class="form-label">MBTI <span class="text-danger">*</span></label>

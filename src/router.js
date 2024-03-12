@@ -50,6 +50,10 @@ router.beforeEach((to, from, next) => {
     const authStore = useAuthStore();
     const isAuthenticated = authStore.state.isAuthenticated;
 
+    if (from.path === '/register' && to.name === 'LoginPage') {
+        sessionStorage.setItem('fromRegisterToLogin', 'true');
+    }
+
     if (to.matched.some(record => record.meta.requireAuth) && !isAuthenticated) {
         next({name: 'LoginPage'});
     } else {

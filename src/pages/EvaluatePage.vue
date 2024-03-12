@@ -12,12 +12,15 @@ export default {
       webtoons: [],
       page: 0,
       size: 40,
+      // sessionTimestamp: ''
+      isLoading: false,
     };
   },
   mounted() {
     this.getWebtoons();
     this.createObserver();
     this.updateEvaluatedCount();
+    // this.createSessionTimestamp();
   },
   computed: {
     progressPercent() {
@@ -43,7 +46,7 @@ export default {
       };
 
       try {
-        await axios.post('/api/evaluation', data);
+        await axios.post(`/api/evaluation`, data);
         const webtoon = this.webtoons.find(w => w.id === webtoonId);
         if (webtoon) {
           webtoon.rating = data.rating;
@@ -55,12 +58,17 @@ export default {
       }
     },
     async getWebtoons() {
+      if (this.isLoading) return;
+      this.isLoading = true;
+
       try {
         const response = await axios.get(`/api/evaluation/card?page=${this.page}&size=${this.size}`);
         this.webtoons.push(...response.data.response.content);
         this.page++;
       } catch (error) {
         console.error(error);
+      } finally {
+        this.isLoading = false;
       }
     },
     createObserver() {
@@ -79,6 +87,10 @@ export default {
 
       observer.observe(this.$refs.loader);
     },
+    // createSessionTimestamp() {
+    //   const now = new Date();
+    //   this.sessionTimestamp = now.toISOString();
+    // }
   },
 };
 </script>
