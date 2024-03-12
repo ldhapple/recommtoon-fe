@@ -34,6 +34,12 @@ function openLinkInPopup(link) {
           <h2 class="card-title">{{ webtoonDetails.title }}</h2>
           <span><br></span>
           <p class="card-text">{{ webtoonDetails.story }}</p>
+          <p class="small text-body">
+            <span v-for="(genre, index) in webtoonDetails.genres" :key="index">
+              {{ genre }}
+              <span v-if="index !== webtoonDetails.genres.length - 1">, </span>
+            </span>
+          </p>
           <p class="small text-muted">{{ webtoonDetails.author }}</p>
         </div>
         <div class="mt-auto p-3">
