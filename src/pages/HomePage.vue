@@ -3,7 +3,29 @@ import WebtoonCardWithScroll from "@/components/WebtoonCardWithScroll.vue";
 
 export default {
   name: 'HomePage',
-  components: {WebtoonCardWithScroll}
+  components: {WebtoonCardWithScroll},
+  data() {
+    return {
+      mbtis: [
+        {type: 'ISTJ'},
+        {type: 'ESTJ'},
+        {type: 'ISFJ'},
+        {type: 'ESFJ'},
+        {type: 'ISFP'},
+        {type: 'ESFP'},
+        {type: 'ISTP'},
+        {type: 'ESTP'},
+        {type: 'INTJ'},
+        {type: 'ENTJ'},
+        {type: 'INFJ'},
+        {type: 'ENFJ'},
+        {type: 'INFP'},
+        {type: 'ENFP'},
+        {type: 'INTP'},
+        {type: 'ENTP'}
+      ]
+    }
+  }
 }
 </script>
 
@@ -18,9 +40,13 @@ export default {
       </div>
 
       <div class="container">
-        <WebtoonCardWithScroll/>
-        <WebtoonCardWithScroll/>
-        <WebtoonCardWithScroll/>
+        <h1 class="section-title">MBTI별 선호 웹툰</h1>
+        <hr class="my-4">
+        <div v-for="mbti in mbtis" :key="mbti.type" class="mbti-section">
+          <h2>{{ mbti.type }}</h2>
+          <WebtoonCardWithScroll :mbtiType="mbti.type"/>
+          <hr class="my-4">
+        </div>
       </div>
     </div>
   </main>
