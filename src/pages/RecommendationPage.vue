@@ -1,59 +1,58 @@
 <script>
 import '@/assets/css/webtoon-card.css'
+import axios from "@/axios";
+import {useRouter} from "vue-router";
 
 export default {
   data() {
     return {
-      webtoons: [
-        {
-          id: 1,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        },
-        {
-          id: 2,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/648419/thumbnail/thumbnail_IMAG21_d9398229-cbfd-47dc-9208-0a6fb936f3a7.jpg',
-        },
-        {
-          id: 3,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/733074/thumbnail/thumbnail_IMAG21_80df3e76-47af-4007-b57c-e8f2830835e5.jpg',
-        },
-        {
-          id: 4,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/783052/thumbnail/thumbnail_IMAG21_800f4c56-26ac-419e-9ed0-baf322311dea.jpg',
-        }, {
-          id: 5,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }, {
-          id: 6,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }, {
-          id: 7,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }, {
-          id: 8,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }, {
-          id: 9,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }, {
-          id: 10,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }, {
-          id: 11,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }, {
-          id: 12,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }, {
-          id: 13,
-          image: 'https://shared-comic.pstatic.net/thumb/webtoon/758037/thumbnail/thumbnail_IMAG21_15cb2611-34c0-4f02-a689-41d0b1016579.jpg',
-        }],
+      webtoons: [],
+      requireRatingMessage: '',
+      evaluatedCount: 0,
     };
   },
+  mounted() {
+    this.recommendations();
+    this.updateEvaluatedCount();
+  },
   methods: {
-    toggleHover(webtoonId, state) {
-      const webtoon = this.webtoons.find(w => w.id === webtoonId);
+    toggleHover(titleId, state) {
+      const webtoon = this.webtoons.find(w => w.titleId === titleId);
       if (webtoon) webtoon.hover = state;
+    },
+
+    async updateEvaluatedCount() {
+      try {
+        const response = await axios.get('/api/evaluation/count');
+        this.evaluatedCount = response.data.response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async recommendations() {
+      try {
+        const response = await axios.get('/api/recommendation');
+
+        if (this.evaluatedCount >= 10) {
+          this.webtoons = response.data.response;
+        } else {
+          this.webtoons = response.data.response;
+          this.requireRatingMessage = '추천을 위해 10개 이상의 평가가 필요합니다. 아래는 개인별 추천이 아닌 MBTI별 장르 선호도에 따른 추천 웹툰입니다.'
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
+  setup() {
+    const router = useRouter();
+    const goToWebtoonPage = (titleId) => {
+      router.push({ name: 'WebtoonBoardPage', params: { titleId: titleId } });
+    };
+
+    return {
+      goToWebtoonPage
     }
   }
 }
@@ -63,20 +62,21 @@ export default {
   <div class="container py-4">
     <h4 class="text-center mb-4">딥 러닝 기반으로 추천된 나에게 꼭 맞는 웹툰을 알아보세요!</h4>
 
-    <div class="row g-3">
-      <div class="webtoon-card col-lg-3 col-md-3 col-6" v-for="webtoon in webtoons" :key="webtoon.id"
-           @mouseover="toggleHover(webtoon.id, true)"
-           @mouseleave="toggleHover(webtoon.id, false)">
+    <p v-if="requireRatingMessage" class="text-center text-danger">{{ requireRatingMessage }}</p>
+
+    <div class="row g-3" v-if="webtoons.length > 0">
+      <div class="webtoon-card col-lg-3 col-md-3 col-6" v-for="webtoon in webtoons" :key="webtoon.titleId"
+           @mouseover="toggleHover(webtoon.titleId, true)"
+           @mouseleave="toggleHover(webtoon.titleId, false)">
         <div class="card h-100">
-          <img :src="webtoon.image" class="card-img-top" alt="웹툰 이미지">
+          <img :src="webtoon.imgSrc" class="card-img-top" alt="웹툰 이미지">
           <div class="card-info" v-if="webtoon.hover">
-            <button class="btn btn-primary">Comments</button>
+            <button @click="goToWebtoonPage(webtoon.titleId)" class="btn btn-primary">Comments</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 
