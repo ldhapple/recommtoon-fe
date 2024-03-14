@@ -51,7 +51,7 @@ export default {
             <div class="card-body p-3 p-md-4 p-xl-5">
               <div class="text-center mb-3">
                 <a href="#!">
-                  <img src="" alt="Logo" width="175" height="57">
+                  <img src="https://cdn.iconscout.com/icon/free/png-256/free-recommendation-438971.png?f=webp" alt="Logo" width="175" height="120">
                 </a>
               </div>
               <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Sign in to your account</h2>
