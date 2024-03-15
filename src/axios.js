@@ -5,7 +5,7 @@ const axiosInstance = axios.create();
 
 axiosInstance.interceptors.request.use(
     (config) => {
-        const{state} = useAuthStore();
+        const {state} = useAuthStore();
         const token = state.accessToken;
 
         if (token) {

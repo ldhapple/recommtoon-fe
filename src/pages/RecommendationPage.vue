@@ -87,8 +87,8 @@ export default {
 <style scoped>
 @media (max-width: 361px) {
   .webtoon-card {
-    flex: 0 0 45%; /* 한 줄에 2개의 카드가 차지할 수 있도록 flex-basis 설정 */
-    max-width: 50%; /* 한 줄에 2개의 카드가 차지할 수 있도록 최대 너비 설정 */
+    flex: 0 0 45%;
+    max-width: 50%;
   }
 }
 </style>

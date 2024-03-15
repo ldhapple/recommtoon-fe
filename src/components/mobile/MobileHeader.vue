@@ -32,7 +32,8 @@ export default {
   <header class="p-3 bg-dark text-white">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <a href="/#!" @click="$router.push('/')" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <a href="/#!" @click="$router.push('/')"
+           class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
           <span>Recommtoon</span>
         </a>
         <template v-if="!isAuthenticated">
@@ -50,7 +51,7 @@ export default {
 
 <style scoped>
 .btn-mobile-sm {
-  padding: 0.25rem 0.5rem; /* 버튼의 패딩 줄임 */
-  font-size: 0.875rem; /* 폰트 사이즈 줄임 */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
 }
 </style>

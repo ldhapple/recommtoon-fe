@@ -1,6 +1,5 @@
 <script>
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
   name: 'MobileFooter',
   data() {
     return {
@@ -41,8 +40,8 @@ export default {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #f8f9fa; /* 푸터 배경색, 필요에 따라 변경 */
-  z-index: 100; /* 푸터가 다른 요소들 위에 표시되도록 z-index 설정 */
+  background-color: #f8f9fa;
+  z-index: 100;
 }
 
 .nav-link {

@@ -21,7 +21,7 @@ const clearAuth = () => {
 
 const refreshToken = async () => {
     try {
-        const response = await axios.post('/api/auth/refresh', { withCredentials: true });
+        const response = await axios.post('/api/auth/refresh', {withCredentials: true});
         const {accessToken} = response.data.response;
 
         setAuth(accessToken, undefined);

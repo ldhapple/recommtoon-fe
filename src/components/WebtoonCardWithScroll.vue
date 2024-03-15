@@ -1,19 +1,19 @@
 <template>
-    <div class="scroll-container">
-      <button @click="scrollLeft" class="scroll-arrow left-arrow">&lt;</button>
-      <div class="webtoon-card-container">
-        <div class="webtoon-card"
-             v-for="webtoon in webtoons" :key="webtoon.titleId"
-             @mouseover="toggleHover(webtoon.titleId, true)"
-             @mouseleave="toggleHover(webtoon.titleId, false)">
-          <img :src="webtoon.imgSrc" class="card-img-top" alt="webtoon">
-          <div class="card-info" v-if="webtoon.hover">
-            <button @click="goToWebtoonPage(webtoon.titleId)" class="btn btn-primary">Comments</button>
-          </div>
+  <div class="scroll-container">
+    <button @click="scrollLeft" class="scroll-arrow left-arrow">&lt;</button>
+    <div class="webtoon-card-container">
+      <div class="webtoon-card"
+           v-for="webtoon in webtoons" :key="webtoon.titleId"
+           @mouseover="toggleHover(webtoon.titleId, true)"
+           @mouseleave="toggleHover(webtoon.titleId, false)">
+        <img :src="webtoon.imgSrc" class="card-img-top" alt="webtoon">
+        <div class="card-info" v-if="webtoon.hover">
+          <button @click="goToWebtoonPage(webtoon.titleId)" class="btn btn-primary">Comments</button>
         </div>
       </div>
-      <button @click="scrollRight" class="scroll-arrow right-arrow">&gt;</button>
     </div>
+    <button @click="scrollRight" class="scroll-arrow right-arrow">&gt;</button>
+  </div>
 </template>
 
 <script>
@@ -56,7 +56,7 @@ export default {
   setup() {
     const router = useRouter();
     const goToWebtoonPage = (titleId) => {
-      router.push({ name: 'WebtoonBoardPage', params: { titleId: titleId } });
+      router.push({name: 'WebtoonBoardPage', params: {titleId: titleId}});
     };
 
     return {

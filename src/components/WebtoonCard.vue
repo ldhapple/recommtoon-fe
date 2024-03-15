@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
+import {useRouter} from "vue-router";
 
 export default {
   props: ['webtoon'],
@@ -22,7 +22,7 @@ export default {
   setup() {
     const router = useRouter();
     const goToWebtoonPage = (titleId) => {
-      router.push({ name: 'WebtoonBoardPage', params: { titleId } });
+      router.push({name: 'WebtoonBoardPage', params: {titleId}});
     };
     return {
       goToWebtoonPage,
@@ -34,20 +34,20 @@ export default {
 <style scoped>
 @media (max-width: 361px) {
   .webtoon-card {
-    flex: 0 0 45%; /* Allows for 2 cards per row */
-    max-width: 50%; /* Sets the maximum width for each card */
+    flex: 0 0 45%;
+    max-width: 50%;
   }
 }
 
 @media (max-width: 600px) {
   .webtoon-card {
-    flex: 0 0 calc(50% - 20px); /* Adjust for gap */
+    flex: 0 0 calc(50% - 20px);
   }
 }
 
 @media (min-width: 601px) {
   .webtoon-card {
-    flex: 0 0 calc(20% - 25px); /* Adjust for gap */
+    flex: 0 0 calc(20% - 25px);
   }
 }
 </style>

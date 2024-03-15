@@ -40,7 +40,7 @@ const thumbsUp = async (commentId) => {
     await axios.post(`/api/comments/like/${commentId}`);
     const updatedComments = comments.value.map((comment) => {
       if (comment.id === commentId) {
-        return { ...comment, isLiked: true, likeCount: comment.likeCount + 1 };
+        return {...comment, isLiked: true, likeCount: comment.likeCount + 1};
       }
       return comment;
     });

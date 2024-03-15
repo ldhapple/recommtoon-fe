@@ -48,7 +48,7 @@ export default {
         const response = await axios.get('/api/webtoons', {
           params: {
             searchParam: this.searchQuery.trim(),
-            page: page - 1, // API expects pages to be 0-indexed
+            page: page - 1,
             size: 50
           }
         });

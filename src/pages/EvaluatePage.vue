@@ -146,34 +146,29 @@ export default {
   width: 90%;
 }
 
-/* PC 환경에서의 스타일 */
 @media (min-width: 992px) {
-  /* lg 브레이크포인트 - PC */
   .progress-container {
-    width: 40%; /* PC에서는 너비 40% */
-    margin-left: 6%; /* 중앙 정렬을 위해 */
+    width: 40%;
+    margin-left: 6%;
   }
 }
 
 @media (min-width: 992px) {
-  /* lg 브레이크포인트 - PC */
   .col-lg-1-5 {
     flex: 0 0 auto;
-    width: 12.5%; /* 100 / 8 = 12.5% */
+    width: 12.5%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  /* md 브레이크포인트 - 태블릿 */
   .col-md-4 {
-    width: 25%; /* 3개 카드를 위한 수정 */
+    width: 25%;
   }
 }
 
 @media (max-width: 767px) {
-  /* sm 브레이크포인트 - 모바일 */
   .col-6 {
-    width: 33.33333%; /* 모바일에서 3개 카드 */
+    width: 33.33333%
   }
 }
 

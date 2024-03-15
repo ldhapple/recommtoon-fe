@@ -2,7 +2,6 @@
 import {computed} from "vue";
 import useAuthStore from "@/stores/authStore";
 import axios from "@/axios";
-// import axios from "axios";
 import router from "@/router";
 
 export default {
@@ -22,7 +21,7 @@ export default {
   methods: {
     setActiveMenu(menuName) {
       this.activeMenu = menuName;
-      this.isMenuVisible = false; // Close the navbar-collapse on click
+      this.isMenuVisible = false;
     },
     goHome() {
       this.activeMenu = '';
@@ -85,7 +84,6 @@ export default {
     </nav>
   </header>
 </template>
-
 
 
 <style scoped>

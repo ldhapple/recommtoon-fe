@@ -36,12 +36,12 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  opacity: 0; /* 기본적으로 투명 */
-  transition: opacity 0.5s ease; /* 부드러운 효과 */
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .card:hover .star-rating {
-  opacity: 1; /* hover 시 투명도 조절 */
+  opacity: 1;
 }
 
 .filled {
