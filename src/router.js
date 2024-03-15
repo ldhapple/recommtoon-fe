@@ -6,6 +6,8 @@ import EvaluatePage from "@/pages/EvaluatePage.vue"
 import RecommendationPage from "@/pages/RecommendationPage.vue";
 import useAuthStore from "@/stores/authStore";
 import WebtoonBoardPage from "@/pages/WebtoonBoardPage.vue";
+import AllWebtoonPage from "@/pages/AllWebtoonPage.vue";
+import FriendsWebtoonPage from "@/pages/FriendsWebtoonPage.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -42,6 +44,17 @@ const router = createRouter({
             name: 'WebtoonBoardPage',
             component: WebtoonBoardPage,
             props: true
+        },
+        {
+            path: '/allWebtoons',
+            name: 'AllWebtoonPage',
+            component: AllWebtoonPage,
+            props: true
+        },
+        {
+            path: '/friendWebtoon',
+            name: 'FritendsWebtoonPage',
+            component: FriendsWebtoonPage
         }
     ],
 });
