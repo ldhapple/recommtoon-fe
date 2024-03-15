@@ -96,10 +96,10 @@ export default {
 </script>
 
 <template>
-  <main class="container mt-4">
-    <div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container mt-4">
+    <div class="p-5 mb-4 rounded-3">
       <div class="container-fluid py-5">
-        <h6 class="fw-bold">AI 추천을 위해 10개 이상의 웹툰을 평가해주세요!</h6>
+        <h4 class="fw-bold">AI 추천을 위해 10개 이상의 웹툰을 평가해주세요!</h4>
       </div>
     </div>
 
@@ -125,7 +125,7 @@ export default {
       </div>
       <div ref="loader" style="width: 100%; height: 20px;"></div>
     </div>
-  </main>
+  </div>
 </template>
 
 <style scoped>

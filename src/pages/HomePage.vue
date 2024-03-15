@@ -30,8 +30,8 @@ export default {
 </script>
 
 <template>
-  <main class="container mt-4">
-    <div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container mt-4">
+    <div class="p-5 mb-4 rounded-3">
       <div class="container-fluid py-5">
         <h6 class="fw-bold">나이, 성별, MBTI, <span class="mobile-break"><br></span> 웹툰 평가 내용을 바탕으로 <span
             class="desktop-break"> <br> </span>
@@ -40,7 +40,7 @@ export default {
       </div>
 
       <div class="container">
-        <h1 class="section-title">MBTI별 선호 웹툰</h1>
+        <h2 class="section-title">MBTI별 선호 웹툰</h2>
         <hr class="my-4">
         <div v-for="mbti in mbtis" :key="mbti.type" class="mbti-section">
           <h2>{{ mbti.type }}</h2>
@@ -49,7 +49,7 @@ export default {
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <style scoped>

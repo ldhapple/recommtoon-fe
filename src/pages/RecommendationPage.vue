@@ -48,7 +48,7 @@ export default {
   setup() {
     const router = useRouter();
     const goToWebtoonPage = (titleId) => {
-      router.push({ name: 'WebtoonBoardPage', params: { titleId: titleId } });
+      router.push({name: 'WebtoonBoardPage', params: {titleId: titleId}});
     };
 
     return {
@@ -60,9 +60,13 @@ export default {
 
 <template>
   <div class="container py-4">
-    <h4 class="text-center mb-4">딥 러닝 기반으로 추천된 나에게 꼭 맞는 웹툰을 알아보세요!</h4>
+    <div class="p-5 mb-4 rounded-3">
+      <div class="container-fluid py-5">
+        <h4 class="text-center mb-4 fw-bold">딥 러닝 기반으로 추천된 나에게 꼭 맞는 웹툰을 알아보세요!</h4>
 
-    <p v-if="requireRatingMessage" class="text-center text-danger">{{ requireRatingMessage }}</p>
+        <p v-if="requireRatingMessage" class="text-center text-danger">{{ requireRatingMessage }}</p>
+      </div>
+    </div>
 
     <div class="row g-3" v-if="webtoons.length > 0">
       <div class="webtoon-card col-lg-3 col-md-3 col-6" v-for="webtoon in webtoons" :key="webtoon.titleId"

@@ -12,10 +12,10 @@ export default {
       isMenuVisible: false,
       activeMenu: '',
       menus: [
-        {name: '전체 웹툰', path: '/evaluate'},
+        {name: '전체 웹툰', path: '/allWebtoons'},
         {name: '평가하기', path: '/evaluate'},
         {name: 'AI 추천 웹툰', path: '/recommendation'},
-        {name: '친구의 웹툰', path: '/'},
+        {name: '친구의 웹툰', path: '/friendWebtoon'},
       ],
     };
   },
