@@ -36,6 +36,7 @@ export default {
 
         if (this.evaluatedCount >= 10) {
           this.webtoons = response.data.response;
+          this.requireRatingMessage = ''
         } else {
           this.webtoons = response.data.response;
           this.requireRatingMessage = '추천을 위해 10개 이상의 평가가 필요합니다. 아래는 개인별 추천이 아닌 MBTI별 장르 선호도에 따른 추천 웹툰입니다.'
