@@ -16,46 +16,52 @@ const router = createRouter({
             path: '/',
             name: 'Home',
             component: Home,
+            meta: { title: 'Recommtoon' }
         },
         {
             path: '/login',
             name: 'LoginPage',
             component: LoginPage,
+            meta: { title: 'Recommtoon - 로그인' }
         },
         {
             path: '/register',
             name: 'RegisterPage',
             component: RegisterPage,
+            meta: { title: 'Recommtoon - 회원가입' }
         },
         {
             path: '/evaluate',
             name: 'EvaluatePage',
             component: EvaluatePage,
-            meta: {requireAuth: true}
+            meta: {requireAuth: true, title: 'Recommtoon - 평가하기'}
         },
         {
             path: '/recommendation',
             name: 'RecommendationPage',
             component: RecommendationPage,
-            meta: {requireAuth: true}
+            meta: {requireAuth: true, title: 'Recommtoon - 추천웹툰'}
         },
         {
             path: '/board/:titleId',
             name: 'WebtoonBoardPage',
             component: WebtoonBoardPage,
-            props: true
+            props: true,
+            meta: {title: 'Recommtoon - 게시판'}
         },
         {
             path: '/allWebtoons',
             name: 'AllWebtoonPage',
             component: AllWebtoonPage,
-            props: true
+            props: true,
+            meta: {title: 'Recommtoon - 전체웹툰'}
         },
         {
             path: '/friendWebtoon',
             name: 'FritendsWebtoonPage',
             component: FriendsWebtoonPage,
-            props: true
+            props: true,
+            meta: { title: 'Recommtoon - 친구의웹툰'}
         }
     ],
 });
@@ -63,6 +69,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const authStore = useAuthStore();
     const isAuthenticated = authStore.state.isAuthenticated;
+
+    document.title = to.meta.title || 'Recommtoon';
 
     if (from.path === '/register' && to.name === 'LoginPage') {
         sessionStorage.setItem('fromRegisterToLogin', 'true');
