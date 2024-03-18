@@ -27,4 +27,4 @@ jobs:
           docker pull recommtoon/recommtoonfe:latest
           docker stop recommtoonfe || true
           docker rm recommtoonfe || true
-          docker run -d --name recommtoonfe -p 80:80 recommtoon/recommtoonfe:latest
+          docker run -d --name recommtoonfe -p 8081:80 recommtoon/recommtoonfe:latest
