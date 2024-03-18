@@ -24,7 +24,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          docker pull ${{ secrets.DOCKER_USERNAME }}/recommtoonfe:latest
+          docker pull recommtoon/recommtoonfe:latest
           docker stop recommtoonfe || true
           docker rm recommtoonfe || true
-          docker run -d --name recommtoonfe -p 80:80 ${{ secrets.DOCKER_USERNAME }}/recommtoonfe:latest
+          docker run -d --name recommtoonfe -p 80:80 recommtoon/recommtoonfe:latest
